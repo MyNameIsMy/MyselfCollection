@@ -19,13 +19,13 @@ class MyselfCollection<E> implements Iterable<E> {
     public void remove(int index){
         Object[] temporaryObjArray = new Object[--size];
         System.arraycopy(objArray, 0, temporaryObjArray, 0, index);
-        if(size > index + 1)
+        if(size > index)
             System.arraycopy(objArray, index + 1, temporaryObjArray, index, size - index);
         objArray = temporaryObjArray;
     }
 
     public void replace(int index, Object o){
-        if(index < 0 || index >= size)
+        if(index >= 0 || index < size)
             throw new IndexOutOfBoundsException();
         objArray[index] = o;
     }
@@ -71,7 +71,7 @@ class MyselfCollection<E> implements Iterable<E> {
         str.add("4");
         str.add("8");
         str.add("8");
-        str.remove(3);
+        str.remove(0);
 
         while (it.hasNext()){
             System.out.print(it.next());
